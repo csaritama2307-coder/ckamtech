@@ -1,333 +1,597 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CKAM Tech - Catálogo de Productos</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #2d3748;
-    }
-    .catalogo-container {
-      max-width: 900px;
-      margin: 0 auto;
-      background: #ffffff;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    }
-    
-    /* ENCABEZADO CON LOGO Y TEXTO */
-    .catalogo-header {
-      background-color: #edf2f7;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 30px;
-    }
-    .header-top {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 15px;
-    }
-    .logo-empresa {
-      width: 90px;
-      height: 90px;
-      object-fit: contain;
-      border-radius: 8px;
-      background: #fff;
-      padding: 5px;
-      border: 1px solid #cbd5e0;
-      flex-shrink: 0;
-    }
-    .header-info h1 {
-      margin: 0 0 5px 0;
-      font-size: 24px;
-      color: #1a202c;
-    }
-    .header-info p {
-      margin: 0;
-      font-size: 15px;
-    }
-    .header-info a {
-      color: #25d366;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .texto-nosotros {
-      font-size: 14px;
-      line-height: 1.5;
-      color: #4a5568;
-      border-top: 1px solid #cbd5e0;
-      padding-top: 12px;
-      margin: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CKAMTECH | Catálogo de Accesorios y Sonido</title>
+    <style>
+        :root {
+            --bg-dark: #0a0810;
+            --card-bg: #140f21;
+            --lilac-main: #b185db;
+            --lilac-dark: #7b2cbf;
+            --text-light: #ffffff;
+            --text-gray: #a0a0a0;
+            --border-color: #28193d;
+        }
 
-    /* SECCIONES Y TABLAS */
-    .seccion {
-      margin-bottom: 30px;
-    }
-    .seccion h2 {
-      font-size: 18px;
-      color: #2b6cb0;
-      border-bottom: 2px solid #2b6cb0;
-      padding-bottom: 8px;
-      margin-bottom: 15px;
-    }
-    .tabla-responsive {
-      overflow-x: auto;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-    }
-    th, td {
-      border: 1px solid #e2e8f0;
-      padding: 10px 12px;
-      font-size: 14px;
-      vertical-align: middle;
-    }
-    th {
-      background-color: #f7fafc;
-      color: #4a5568;
-      font-weight: 600;
-    }
-    tr:nth-child(even) {
-      background-color: #f8fafc;
-    }
-    .col-img {
-      width: 60px;
-      text-align: center;
-    }
-    .img-prod {
-      width: 50px;
-      height: 50px;
-      object-fit: cover;
-      border-radius: 6px;
-      border: 1px solid #cbd5e0;
-      display: block;
-      margin: 0 auto;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    /* ADAPTACIÓN A MÓVILES */
-    @media (max-width: 600px) {
-      .header-top {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
-  </style>
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Encabezado Centrado */
+        header {
+            width: 100%;
+            background: linear-gradient(180deg, #000000 0%, #150a21 100%);
+            padding: 2.5rem 1rem 1.5rem;
+            border-bottom: 2px solid var(--lilac-main);
+            display: flex;
+            justify-content: center;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo-img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--lilac-main);
+        }
+
+        .header-text {
+            text-align: center;
+        }
+
+        header h1 {
+            color: var(--lilac-main);
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        header p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin-top: 0.3rem;
+        }
+
+        .contact-info {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-top: 6px;
+        }
+
+        .contact-info a {
+            color: #25d366;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Menú de navegación Centrado */
+        nav {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            background-color: #11091c;
+            padding: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: var(--lilac-main);
+            color: #000000;
+        }
+
+        /* Contenedor Principal Centrado */
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 2rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Sección Quienes Somos */
+        .about-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--lilac-dark);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(123, 44, 191, 0.15);
+        }
+
+        .about-section p {
+            color: #e0e0e0;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .category-title {
+            width: 100%;
+            color: var(--lilac-main);
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1.2rem 0;
+            padding-left: 12px;
+            border-left: 4px solid var(--lilac-main);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: left;
+        }
+
+        /* Cuadrícula de Productos Centrada */
+        .grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        /* Tarjeta de Producto */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(177, 133, 219, 0.25);
+            border-color: var(--lilac-main);
+        }
+
+        /* Imagen del Producto */
+        .img-container {
+            width: 100%;
+            height: 200px;
+            background-color: #0d0814;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sku-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(10, 8, 16, 0.85);
+            color: var(--lilac-main);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Contenido de la Tarjeta */
+        .card-body {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-desc {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .pvp-label {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .price-val {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--lilac-main);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--lilac-main);
+            color: #000000;
+            text-decoration: none;
+            padding: 9px 15px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #d4b2f0;
+        }
+
+        /* Pie de página Centrado */
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            background-color: #040306;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
 
-<div class="catalogo-container">
+    <header>
+        <div class="header-content">
+            <img src="https://i.ibb.co/pBbywrZV/logo.jpg" alt="Logo CKAMTECH" class="logo-img">
+            <div class="header-text">
+                <h1>CKAMTECH</h1>
+                <p>Accesorios para Celulares y Equipos de Sonido</p>
+                <div class="contact-info">
+                    📞 Pedidos WhatsApp: <a href="https://wa.me/593984833448" target="_blank">+593 98 483 3448</a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <!-- ENCABEZADO CON LOGO -->
-  <header class="catalogo-header">
-    <div class="header-top">
-      <img src="https://i.ibb.co/pBbywrZV/logo.jpg" alt="Logo CKAM Tech" class="logo-empresa">
-      <div class="header-info">
-        <h1>CKAM Tech</h1>
-        <p><strong>Contacto y Pedidos por WhatsApp:</strong> <a href="https://wa.me/593984833448" target="_blank">+593 98 483 3448</a></p>
-      </div>
+    <nav>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#cables">Cables y Adaptadores</a>
+        <a href="#cargadores">Cargadores</a>
+        <a href="#audifonos">Audífonos Bluetooth</a>
+        <a href="#parlantes">Parlantes</a>
+        <a href="#soportes">Soportes y Más</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- SECCIÓN SOBRE NOSOTROS -->
+        <section id="nosotros" class="about-section">
+            <p>En <strong>CKAM Tech</strong> somos distribuidores directos de tecnología, audio y accesorios de alta calidad en el Ecuador. Importamos soluciones de carga rápida, audio TWS y sistemas de sonido para dinamizar negocios locales y equipar a usuarios exigentes con precios imbatibles y garantía inmediata.</p>
+        </section>
+
+        <!-- CATEGORÍA: CABLES Y ADAPTADORES -->
+        <h2 id="cables" class="category-title">Cables y Adaptadores</h2>
+        <div class="grid">
+
+            <div class="card">
+                <div class="img-container">
+                    <span class="sku-badge">Cód. 45137</span>
+                    <img src="https://i.ibb.co/FbCJGqDg/44670.png" alt="Cable ECCO EC-10M">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Cable ECCO EC-10M 18W (USB a V8)</h3>
+                    <p class="card-desc">Carga de 18W y transmisión de datos eficiente. Longitud de 1 metro, ideal para dispositivos V8 (Micro-USB).</p>
+                    <div class="price-row">
+                        <div>
+                            <span class="pvp-label">Precio PVP</span>
+                            <span class="price-val">$3.00</span>
+                        </div>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cable%20ECCO%20EC-10M%20(Cod%2045137)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="img-container">
+                    <span class="sku-badge">Cód. 44668</span>
+                    <img src="https://i.ibb.co/FbCJGqDg/44670.png" alt="Cable LDNIO LS841 V8">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Cable LDNIO LS841 25W (USB a V8)</h3>
+                    <p class="card-desc">Carga ultra rápida de 25W, longitud de 1 metro. Construcción duradera de alta flexibilidad.</p>
+                    <div class="price-row">
+                        <div>
+                            <span class="pvp-label">Precio PVP</span>
+                            <span class="price-val">$6.00</span>
+                        </div>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cable%20LDNIO%20LS841%20V8%20(Cod%2044668)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="img-container">
+                    <span class="sku-badge">Cód. 42293</span>
+                    <img src="https://i.ibb.co/Hfxxsp5S/42293.png" alt="Cable LDNIO SY-03 iPhone">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Cable LDNIO SY-03 12W (USB a iPhone)</h3>
+                    <p class="card-desc">Diseñado para dispositivos Apple con conector Lightning. Carga estable de 12W y 1 metro de alcance.</p>
+                    <div class="price-row">
+                        <div>
+                            <span class="pvp-label">Precio PVP</span>
+                            <span class="price-val">$5.00</span>
+                        </div>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cable%20LDNIO%20SY-03%20iPhone%20(Cod%2042293)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="img-container">
+                    <span class="sku-badge">Cód. 44670</span>
+                    <img src="https://i.ibb.co/FbCJGqDg/44670.png" alt="Cable LDNIO LS841 Tipo-C">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Cable LDNIO LS841 25W (USB a Tipo-C)</h3>
+                    <p class="card-desc">Carga rápida de 25W para dispositivos Tipo-C. Material reforzado contra dobleces y desgaste.</p>
+                    <div class="price-row">
+                        <div>
+                            <span class="pvp-label">Precio PVP</span>
+                            <span class="price-val">$6.00</span>
+                        </div>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cable%20LDNIO%20LS841%20Tipo-C%20(Cod%2044670)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="img-container">
+                    <span class="sku-badge">Cód. 45271</span>
+                    <img src="https://i.ibb.co/FbCJGqDg/44670.png" alt="Cable LDNIO LC94C 3en1">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Cable LDNIO LC94C 3 en 1 100W</h3>
+                    <p class="card-desc">Carga súper rápida de 100W. Salidas triples: Micro-USB (V8), iPhone (Lightning) y Tipo-C en un solo cable.</p>
+                    <div class="price-row">
+                        <div>
+                            <span class="pvp-label">Precio PVP</span>
+                            <span class="price-val">$10.00</span>
+                        </div>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cable%20LDNIO%20LC94C%203en1%20(Cod%2045271)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="img-container">
+                    <span class="sku-badge">Cód. 44052</span>
+                    <img src="https://i.ibb.co/s9GfBQqS/44052.png" alt="Adaptador OTG LDNIO LC150">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Adaptador OTG LDNIO LC150 (USB a Tipo-C)</h3>
+                    <p class="card-desc">Convertidor metálico de alta velocidad OTG. Conecta periféricos USB a tus dispositivos con puerto Tipo-C.</p>
+                    <div class="price-row">
+                        <div>
+                            <span class="pvp-label">Precio PVP</span>
+                            <span class="price-val">$5.00</span>
+                        </div>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Adaptador%20LDNIO%20LC150%20(Cod%2044052)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CATEGORÍA: CARGADORES -->
+        <h2 id="cargadores" class="category-title">Cargadores de Pared</h2>
+        <div class="grid">
+
+            <div class="card">
+                <div class="img-container">
+                    <span class="sku-badge">Cód. 44956</span>
+                    <img src="https://i.ibb.co/Hfxxsp5S/42293.png" alt="Cargador IPH 20W">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Cargador IPH 20W A2305 + Cable TC-IPH</h3>
+                    <p class="card-desc">Cubo de carga rápida USB-C de 20W incluye cable Tipo-C a Lightning para iPhone.</p>
+                    <div class="price-row">
+                        <div>
+                            <span class="pvp-label">Precio PVP</span>
+                            <span class="price-val">$10.00</span>
+                        </div>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cargador%20IPH%2020W%20(Cod%2044956)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="img-container">
+                    <span class="sku-badge">Cód. 45028</span>
+                    <img src="https://i.ibb.co/Hfxxsp5S/42293.png" alt="Cargador LDNIO Q111">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Cargador LDNIO Q111 20W PD + Cable TC-IPH</h3>
+                    <p class="card-desc">Cargador Power Delivery 20W inteligente con protección contra sobrecargas. Incluye cable Tipo-C a iPhone.</p>
+                    <div class="price-row">
+                        <div>
+                            <span class="pvp-label">Precio PVP</span>
+                            <span class="price-val">$19.00</span>
+                        </div>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cargador%20LDNIO%20Q111%20(Cod%2045028)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CATEGORÍA: AUDÍFONOS BLUETOOTH -->
+        <h2 id="audifonos" class="category-title">Audífonos Bluetooth</h2>
+        <div class="grid">
+
+            <div class="card">
+                <div class="img-container">
+                    <span class="sku-badge">Cód. 45452</span>
+                    <img src="https://i.ibb.co/TBsdhjSB/45452.png" alt="AirPods PRO5 ANC">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">AirPods PRO5 ANC</h3>
+                    <p class="card-desc">Audífonos In-Ear con Cancelación Activa de Ruido (ANC), estuche de carga rápida y audio nítido.</p>
+                    <div class="price-row">
+                        <div>
+                            <span class="pvp-label">Precio PVP</span>
+                            <span class="price-val">$21.00</span>
+                        </div>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesan%20los%20AirPods%20PRO5%20ANC%20(Cod%2045452)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="img-container">
+                    <span class="sku-badge">Cód. 45835</span>
+                    <img src="https://i.ibb.co/MDsmKzpD/45835.jpg" alt="AirPods LDNIO T15">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">AirPods LDNIO T15 (Bluetooth 6.0)</h3>
+                    <p class="card-desc">Tecnología Bluetooth 6.0 de baja latencia, excelente acústica, micrófono HD y ajuste ergonómico.</p>
+                    <div class="price-row">
+                        <div>
+                            <span class="pvp-label">Precio PVP</span>
+                            <span class="price-val">$21.00</span>
+                        </div>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesan%20los%20AirPods%20LDNIO%20T15%20(Cod%2045835)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CATEGORÍA: PARLANTES -->
+        <h2 id="parlantes" class="category-title">Parlantes de Sonido</h2>
+        <div class="grid">
+
+            <div class="card">
+                <div class="img-container">
+                    <span class="sku-badge">Cód. A0102</span>
+                    <img src="https://i.ibb.co/JRQJ4dw1/A0102.jpg" alt="Parlante Económico 3 pulgadas">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Parlante Económico 3" con Luces RGB</h3>
+                    <p class="card-desc">Bocina compacta portátil (ZQS/CS) con conectividad Bluetooth, ilumninación RGB ambiental y Radio FM.</p>
+                    <div class="price-row">
+                        <div>
+                            <span class="pvp-label">Precio PVP</span>
+                            <span class="price-val">$6.00</span>
+                        </div>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Parlante%203%20pulgadas%20(Cod%20A0102)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="img-container">
+                    <span class="sku-badge">Cód. 45699</span>
+                    <img src="https://i.ibb.co/DH7LkYQq/45699.jpg" alt="Parlante Mediano 4 pulgadas">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Parlante Mediano 4" Doble Bocina RGB</h3>
+                    <p class="card-desc">Potente sistema de audio con doble altavoz de 4 pulgadas, patrones de luces LED RGB y gran acústica.</p>
+                    <div class="price-row">
+                        <div>
+                            <span class="pvp-label">Precio PVP</span>
+                            <span class="price-val">$21.00</span>
+                        </div>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Parlante%20Doble%204%20pulgadas%20(Cod%2045699)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CATEGORÍA: SOPORTES Y OTROS -->
+        <h2 id="soportes" class="category-title">Soportes y Accesorios</h2>
+        <div class="grid">
+
+            <div class="card">
+                <div class="img-container">
+                    <span class="sku-badge">Cód. 43757</span>
+                    <img src="https://i.ibb.co/s9GfBQqS/44052.png" alt="Soporte Vehicular LDNIO">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Soporte Vehicular Metal LDNIO (MG03/MG10)</h3>
+                    <p class="card-desc">Soporte magnético/ajustable metálico para rejilla de aire en autos. Agarre firme y estructura prémium.</p>
+                    <div class="price-row">
+                        <div>
+                            <span class="pvp-label">Precio PVP</span>
+                            <span class="price-val">$10.00</span>
+                        </div>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Soporte%20Vehicular%20Metal%20LDNIO%20(Cod%2043757)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
-    <p class="texto-nosotros">
-      En CKAM Tech somos distribuidores directos de tecnología, audio y accesorios de alta calidad en el Ecuador. Importamos soluciones de carga rápida, audio TWS y sistemas de sonido para dinamizar negocios locales y equipar a usuarios exigentes con precios imbatibles y garantía inmediata.
-    </p>
-  </header>
 
-  <!-- CABLES -->
-  <section class="seccion">
-    <h2>🔌 Cables de Carga y Datos</h2>
-    <div class="tabla-responsive">
-      <table>
-        <thead>
-          <tr>
-            <th>Imagen</th>
-            <th>Código / Ref.</th>
-            <th>Descripción del Modelo</th>
-            <th>Potencia</th>
-            <th>Conector</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="col-img"><img src="https://i.ibb.co/g5YJPyL/45137.png" alt="45137" class="img-prod"></td>
-            <td><strong>45137</strong></td>
-            <td>Cable ECCO EC-10M (1M)</td>
-            <td>18W</td>
-            <td>USB a V8</td>
-          </tr>
-          <tr>
-            <td class="col-img"><img src="https://i.ibb.co/FbCJGqDg/44670.png" alt="44668" class="img-prod"></td>
-            <td><strong>44668</strong></td>
-            <td>Cable LDNIO LS841 (1M)</td>
-            <td>25W</td>
-            <td>USB a V8</td>
-          </tr>
-          <tr>
-            <td class="col-img"><img src="https://i.ibb.co/Hfxxsp5S/42293.png" alt="42293" class="img-prod"></td>
-            <td><strong>42293</strong></td>
-            <td>Cable LDNIO SY-03 (1M)</td>
-            <td>12W</td>
-            <td>USB a iPhone</td>
-          </tr>
-          <tr>
-            <td class="col-img"><img src="https://i.ibb.co/FbCJGqDg/44670.png" alt="44670" class="img-prod"></td>
-            <td><strong>44670</strong></td>
-            <td>Cable LDNIO LS841 (1M)</td>
-            <td>25W</td>
-            <td>USB a Tipo-C</td>
-          </tr>
-          <tr>
-            <td class="col-img"><img src="https://i.ibb.co/zWvzhNNr/45271.png" alt="45271" class="img-prod"></td>
-            <td><strong>45271</strong></td>
-            <td>Cable LDNIO LC94C (3 en 1)</td>
-            <td>100W</td>
-            <td>V8 / iPhone / Tipo-C</td>
-          </tr>
-          <tr>
-            <td class="col-img"><img src="https://i.ibb.co/s9GfBQqS/44052.png" alt="LC150" class="img-prod"></td>
-            <td><strong>Sugerido</strong></td>
-            <td>Adaptador OTG LDNIO LC150</td>
-            <td>—</td>
-            <td>USB a Tipo-C</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- CARGADORES -->
-  <section class="seccion">
-    <h2>⚡ Cargadores de Pared</h2>
-    <div class="tabla-responsive">
-      <table>
-        <thead>
-          <tr>
-            <th>Imagen</th>
-            <th>Código / Ref.</th>
-            <th>Descripción del Modelo</th>
-            <th>Potencia</th>
-            <th>Detalle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="col-img"><img src="https://i.ibb.co/fz5xPw8f/44956.jpg" alt="44956" class="img-prod"></td>
-            <td><strong>44956</strong></td>
-            <td>Cargador Caja IPH (Modelo A2305)</td>
-            <td>20W</td>
-            <td>Incluye cable Tipo-C a iPhone</td>
-          </tr>
-          <tr>
-            <td class="col-img"><img src="https://i.ibb.co/fVPfntG8/45028.png" alt="45028" class="img-prod"></td>
-            <td><strong>45028</strong></td>
-            <td>Cargador LDNIO Q111</td>
-            <td>20W</td>
-            <td>Puerto PD + Cable Tipo-C a iPhone</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- AUDIO -->
-  <section class="seccion">
-    <h2>🎧 Audio e Inalámbricos</h2>
-    <div class="tabla-responsive">
-      <table>
-        <thead>
-          <tr>
-            <th>Imagen</th>
-            <th>Código / Ref.</th>
-            <th>Descripción del Modelo</th>
-            <th>Características</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="col-img"><img src="https://i.ibb.co/TBsdhjSB/45452.png" alt="45452" class="img-prod"></td>
-            <td><strong>45452</strong></td>
-            <td>AirPods PRO5 ANC</td>
-            <td>Cancelación Activa de Ruido (ANC)</td>
-          </tr>
-          <tr>
-            <td class="col-img"><img src="https://i.ibb.co/MDsmKzpD/45835.jpg" alt="45835" class="img-prod"></td>
-            <td><strong>45835</strong></td>
-            <td>AirPods LDNIO T15</td>
-            <td>Conexión Bluetooth 6.0</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- PARLANTES -->
-  <section class="seccion">
-    <h2>🔊 Parlantes</h2>
-    <div class="tabla-responsive">
-      <table>
-        <thead>
-          <tr>
-            <th>Imagen</th>
-            <th>Código / Ref.</th>
-            <th>Descripción del Modelo</th>
-            <th>Características</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="col-img"><img src="https://i.ibb.co/JRQJ4dw1/A0102.jpg" alt="ZQS" class="img-prod"></td>
-            <td><strong>ZQS1343 / ZQS1372</strong></td>
-            <td>Parlante Económico 3"</td>
-            <td>Luces RGB integradas</td>
-          </tr>
-          <tr>
-            <td class="col-img"><img src="https://i.ibb.co/DH7LkYQq/45699.jpg" alt="CS" class="img-prod"></td>
-            <td><strong>CS4444 / CS4445</strong></td>
-            <td>Parlante Mediano 4" Doble Bocina</td>
-            <td>Doble bocina + Luces RGB</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ACCESORIOS -->
-  <section class="seccion">
-    <h2>🚗 Accesorios Automotrices</h2>
-    <div class="tabla-responsive">
-      <table>
-        <thead>
-          <tr>
-            <th>Imagen</th>
-            <th>Código / Ref.</th>
-            <th>Descripción del Modelo</th>
-            <th>Material</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="col-img"><img src="https://i.ibb.co/Kjz2KcKJ/43757.jpg" alt="MG" class="img-prod"></td>
-            <td><strong>43757 / 44163</strong></td>
-            <td>Soporte Vehicular LDNIO (MG03 / MG10)</td>
-            <td>Construcción metálica de alta resistencia</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-</div>
+    <footer>
+        <p>&copy; 2026 CKAMTECH Ecuador. Todos los derechos reservados.</p>
+    </footer>
 
 </body>
 </html>
