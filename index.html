@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CKAM Tech - Catálogo de Productos</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+      color: #2d3748;
+    }
+    .catalogo-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* ENCABEZADO CON LOGO Y TEXTO */
+    .catalogo-header {
+      background-color: #edf2f7;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+    .header-top {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 15px;
+    }
+    .logo-empresa {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #fff;
+      padding: 5px;
+      border: 1px solid #cbd5e0;
+      flex-shrink: 0;
+    }
+    .header-info h1 {
+      margin: 0 0 5px 0;
+      font-size: 24px;
+      color: #1a202c;
+    }
+    .header-info p {
+      margin: 0;
+      font-size: 15px;
+    }
+    .header-info a {
+      color: #25d366;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .texto-nosotros {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #4a5568;
+      border-top: 1px solid #cbd5e0;
+      padding-top: 12px;
+      margin: 0;
+    }
+
+    /* SECCIONES Y TABLAS */
+    .seccion {
+      margin-bottom: 30px;
+    }
+    .seccion h2 {
+      font-size: 18px;
+      color: #2b6cb0;
+      border-bottom: 2px solid #2b6cb0;
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+    }
+    .tabla-responsive {
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    th, td {
+      border: 1px solid #e2e8f0;
+      padding: 10px 12px;
+      font-size: 14px;
+      vertical-align: middle;
+    }
+    th {
+      background-color: #f7fafc;
+      color: #4a5568;
+      font-weight: 600;
+    }
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    .col-img {
+      width: 60px;
+      text-align: center;
+    }
+    .img-prod {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid #cbd5e0;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* ADAPTACIÓN A MÓVILES */
+    @media (max-width: 600px) {
+      .header-top {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="catalogo-container">
+
+  <!-- ENCABEZADO CON LOGO -->
+  <header class="catalogo-header">
+    <div class="header-top">
+      <img src="https://i.ibb.co/pBbywrZV/logo.jpg" alt="Logo CKAM Tech" class="logo-empresa">
+      <div class="header-info">
+        <h1>CKAM Tech</h1>
+        <p><strong>Contacto y Pedidos por WhatsApp:</strong> <a href="https://wa.me/593984833448" target="_blank">+593 98 483 3448</a></p>
+      </div>
+    </div>
+    <p class="texto-nosotros">
+      En CKAM Tech somos distribuidores directos de tecnología, audio y accesorios de alta calidad en el Ecuador. Importamos soluciones de carga rápida, audio TWS y sistemas de sonido para dinamizar negocios locales y equipar a usuarios exigentes con precios imbatibles y garantía inmediata.
+    </p>
+  </header>
+
+  <!-- CABLES -->
+  <section class="seccion">
+    <h2>🔌 Cables de Carga y Datos</h2>
+    <div class="tabla-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Código / Ref.</th>
+            <th>Descripción del Modelo</th>
+            <th>Potencia</th>
+            <th>Conector</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-img"><img src="https://i.ibb.co/g5YJPyL/45137.png" alt="45137" class="img-prod"></td>
+            <td><strong>45137</strong></td>
+            <td>Cable ECCO EC-10M (1M)</td>
+            <td>18W</td>
+            <td>USB a V8</td>
+          </tr>
+          <tr>
+            <td class="col-img"><img src="https://i.ibb.co/FbCJGqDg/44670.png" alt="44668" class="img-prod"></td>
+            <td><strong>44668</strong></td>
+            <td>Cable LDNIO LS841 (1M)</td>
+            <td>25W</td>
+            <td>USB a V8</td>
+          </tr>
+          <tr>
+            <td class="col-img"><img src="https://i.ibb.co/Hfxxsp5S/42293.png" alt="42293" class="img-prod"></td>
+            <td><strong>42293</strong></td>
+            <td>Cable LDNIO SY-03 (1M)</td>
+            <td>12W</td>
+            <td>USB a iPhone</td>
+          </tr>
+          <tr>
+            <td class="col-img"><img src="https://i.ibb.co/FbCJGqDg/44670.png" alt="44670" class="img-prod"></td>
+            <td><strong>44670</strong></td>
+            <td>Cable LDNIO LS841 (1M)</td>
+            <td>25W</td>
+            <td>USB a Tipo-C</td>
+          </tr>
+          <tr>
+            <td class="col-img"><img src="https://i.ibb.co/zWvzhNNr/45271.png" alt="45271" class="img-prod"></td>
+            <td><strong>45271</strong></td>
+            <td>Cable LDNIO LC94C (3 en 1)</td>
+            <td>100W</td>
+            <td>V8 / iPhone / Tipo-C</td>
+          </tr>
+          <tr>
+            <td class="col-img"><img src="https://i.ibb.co/s9GfBQqS/44052.png" alt="LC150" class="img-prod"></td>
+            <td><strong>Sugerido</strong></td>
+            <td>Adaptador OTG LDNIO LC150</td>
+            <td>—</td>
+            <td>USB a Tipo-C</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CARGADORES -->
+  <section class="seccion">
+    <h2>⚡ Cargadores de Pared</h2>
+    <div class="tabla-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Código / Ref.</th>
+            <th>Descripción del Modelo</th>
+            <th>Potencia</th>
+            <th>Detalle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-img"><img src="https://i.ibb.co/fz5xPw8f/44956.jpg" alt="44956" class="img-prod"></td>
+            <td><strong>44956</strong></td>
+            <td>Cargador Caja IPH (Modelo A2305)</td>
+            <td>20W</td>
+            <td>Incluye cable Tipo-C a iPhone</td>
+          </tr>
+          <tr>
+            <td class="col-img"><img src="https://i.ibb.co/fVPfntG8/45028.png" alt="45028" class="img-prod"></td>
+            <td><strong>45028</strong></td>
+            <td>Cargador LDNIO Q111</td>
+            <td>20W</td>
+            <td>Puerto PD + Cable Tipo-C a iPhone</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- AUDIO -->
+  <section class="seccion">
+    <h2>🎧 Audio e Inalámbricos</h2>
+    <div class="tabla-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Código / Ref.</th>
+            <th>Descripción del Modelo</th>
+            <th>Características</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-img"><img src="https://i.ibb.co/TBsdhjSB/45452.png" alt="45452" class="img-prod"></td>
+            <td><strong>45452</strong></td>
+            <td>AirPods PRO5 ANC</td>
+            <td>Cancelación Activa de Ruido (ANC)</td>
+          </tr>
+          <tr>
+            <td class="col-img"><img src="https://i.ibb.co/MDsmKzpD/45835.jpg" alt="45835" class="img-prod"></td>
+            <td><strong>45835</strong></td>
+            <td>AirPods LDNIO T15</td>
+            <td>Conexión Bluetooth 6.0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PARLANTES -->
+  <section class="seccion">
+    <h2>🔊 Parlantes</h2>
+    <div class="tabla-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Código / Ref.</th>
+            <th>Descripción del Modelo</th>
+            <th>Características</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-img"><img src="https://i.ibb.co/JRQJ4dw1/A0102.jpg" alt="ZQS" class="img-prod"></td>
+            <td><strong>ZQS1343 / ZQS1372</strong></td>
+            <td>Parlante Económico 3"</td>
+            <td>Luces RGB integradas</td>
+          </tr>
+          <tr>
+            <td class="col-img"><img src="https://i.ibb.co/DH7LkYQq/45699.jpg" alt="CS" class="img-prod"></td>
+            <td><strong>CS4444 / CS4445</strong></td>
+            <td>Parlante Mediano 4" Doble Bocina</td>
+            <td>Doble bocina + Luces RGB</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ACCESORIOS -->
+  <section class="seccion">
+    <h2>🚗 Accesorios Automotrices</h2>
+    <div class="tabla-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Código / Ref.</th>
+            <th>Descripción del Modelo</th>
+            <th>Material</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-img"><img src="https://i.ibb.co/Kjz2KcKJ/43757.jpg" alt="MG" class="img-prod"></td>
+            <td><strong>43757 / 44163</strong></td>
+            <td>Soporte Vehicular LDNIO (MG03 / MG10)</td>
+            <td>Construcción metálica de alta resistencia</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
