@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CKAMTECH | Catálogo de Accesorios y Sonido</title>
+    
+    <!-- Carga del SDK de PayPhone (v2) -->
+    <script src="https://pay.payphonetodoesposible.com/api/button/script/payphone-payment-box.js"></script>
+
     <style>
         :root {
             --bg-dark: #0a0810;
@@ -267,7 +271,6 @@
         .card-actions {
             display: flex;
             gap: 8px;
-            flex-wrap: wrap;
         }
 
         .btn-whatsapp {
@@ -426,8 +429,8 @@
             background-color: var(--border-color);
             color: #fff;
             border: none;
-            width: 24px;
-            height: 24px;
+            width: 26px;
+            height: 26px;
             border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
@@ -450,7 +453,10 @@
 
         #pp-button {
             width: 100%;
-            margin-top: 10px;
+            min-height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Pie de página Centrado */
@@ -465,9 +471,6 @@
             font-size: 0.9rem;
         }
     </style>
-
-    <!-- Script Oficial de PayPhone -->
-    <script type="module" src="https://pay.payphonetodoesposible.com/api/button/script/payphone-payment-box.js"></script>
 
     <!-- Meta Pixel Code -->
     <script>
@@ -843,7 +846,7 @@
                     <span>Total:</span>
                     <span id="cartTotal">$0.00</span>
                 </div>
-                <!-- Contenedor donde PayPhone renderiza su botón de pago -->
+                <!-- Contenedor del Botón de PayPhone -->
                 <div id="pp-button"></div>
             </div>
         </div>
@@ -853,7 +856,7 @@
         <p>&copy; 2026 CKAMTECH Ecuador. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- LÓGICA DEL CARRITO Y PAYPHONE -->
+    <!-- LÓGICA JAVASCRIPT DEL CARRITO Y PAYPHONE -->
     <script>
         let cart = [];
 
@@ -923,31 +926,49 @@
 
             if (amountInCents <= 0) return;
 
-            // CONFIGURACIÓN DE PAYPHONE
-            // Reemplaza "TU_TOKEN_DE_PAYPHONE" y "TU_STORE_ID" con tus credenciales obtenidas en PayPhone Developer
-            payphone.Button({
-                token: "TU_TOKEN_DE_PAYPHONE", 
-                btnOnly: true,
-                fields: {
-                    endpoint: "https://pay.payphonetodoesposible.com/api/button/V2/Confirm",
-                    amount: amountInCents,
-                    amountWithoutTax: amountInCents,
-                    currency: "USD",
-                    clientTransactionId: "CKAM-" + Date.now(),
-                    storeId: "TU_STORE_ID"
-                },
-                render: "#pp-button",
-                callback: function (response) {
-                    if (response.status === "Approved") {
-                        alert("¡Pago realizado con éxito! ID de Transacción: " + response.transactionId);
-                        cart = [];
-                        updateCartUI();
-                        toggleCart();
-                    } else {
-                        alert("Ocurrió un inconveniente con el pago.");
+            // Intentar renderizar cuando la librería PayPhone esté disponible en el navegador
+            let attempts = 0;
+            const maxAttempts = 10;
+
+            const renderInterval = setInterval(() => {
+                attempts++;
+                
+                if (typeof payphone !== 'undefined' && payphone.Button) {
+                    clearInterval(renderInterval);
+                    container.innerHTML = ''; // Limpia el contenedor antes de dibujar
+                    
+                    try {
+                        payphone.Button({
+                            token: "TU_TOKEN_DE_PAYPHONE", // Reemplazar por tu Token de PayPhone Developer
+                            btnOnly: true,
+                            fields: {
+                                endpoint: "https://pay.payphonetodoesposible.com/api/button/V2/Confirm",
+                                amount: amountInCents,
+                                amountWithoutTax: amountInCents,
+                                currency: "USD",
+                                clientTransactionId: "CKAM-" + Date.now(),
+                                storeId: "TU_STORE_ID" // Reemplazar por tu Store ID
+                            },
+                            render: "#pp-button",
+                            callback: function (response) {
+                                if (response.status === "Approved") {
+                                    alert("¡Pago realizado con éxito! ID de Transacción: " + response.transactionId);
+                                    cart = [];
+                                    updateCartUI();
+                                    toggleCart();
+                                } else {
+                                    alert("Ocurrió un inconveniente al procesar el pago.");
+                                }
+                            }
+                        });
+                    } catch (err) {
+                        console.error("Error al inicializar PayPhone:", err);
                     }
+                } else if (attempts >= maxAttempts) {
+                    clearInterval(renderInterval);
+                    container.innerHTML = '<p style="color: #ff6b6b; font-size: 0.85rem; text-align: center;">El servicio de pago no está disponible temporalmente. Intente nuevamente.</p>';
                 }
-            });
+            }, 300);
         }
     </script>
 </body>
