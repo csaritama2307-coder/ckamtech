@@ -248,6 +248,7 @@
             align-items: center;
             padding-top: 10px;
             border-top: 1px solid var(--border-color);
+            margin-bottom: 12px;
         }
 
         .pvp-label {
@@ -263,20 +264,193 @@
             color: var(--lilac-main);
         }
 
+        .card-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
         .btn-whatsapp {
-            background-color: var(--lilac-main);
-            color: #000000;
+            background-color: #25d366;
+            color: #ffffff;
             text-decoration: none;
-            padding: 9px 15px;
+            padding: 8px 12px;
             border-radius: 8px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: background-color 0.3s ease;
             display: inline-block;
+            text-align: center;
+            flex: 1;
         }
 
         .btn-whatsapp:hover {
+            background-color: #1eb854;
+        }
+
+        .btn-add-cart {
+            background-color: var(--lilac-main);
+            color: #000000;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            flex: 1;
+        }
+
+        .btn-add-cart:hover {
             background-color: #d4b2f0;
+        }
+
+        /* Botón Flotante del Carrito */
+        .cart-float-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--lilac-main);
+            color: #000;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(177, 133, 219, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .cart-float-btn:hover {
+            transform: scale(1.05);
+            background-color: #d4b2f0;
+        }
+
+        .cart-badge {
+            background-color: #000;
+            color: #fff;
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 0.85rem;
+        }
+
+        /* Modal del Carrito */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .cart-modal.active {
+            display: flex;
+        }
+
+        .cart-content {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .cart-header {
+            padding: 1.2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h3 {
+            color: var(--lilac-main);
+            font-size: 1.2rem;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--text-gray);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-body {
+            padding: 1.2rem;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .cart-item-info h4 {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .cart-item-info span {
+            font-size: 0.85rem;
+            color: var(--lilac-main);
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cart-item-controls button {
+            background-color: var(--border-color);
+            color: #fff;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .cart-footer {
+            padding: 1.2rem;
+            border-top: 1px solid var(--border-color);
+            background-color: #0f0b18;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        #pp-button {
+            width: 100%;
+            margin-top: 10px;
         }
 
         /* Pie de página Centrado */
@@ -291,23 +465,27 @@
             font-size: 0.9rem;
         }
     </style>
+
+    <!-- Script Oficial de PayPhone -->
+    <script type="module" src="https://pay.payphonetodoesposible.com/api/button/script/payphone-payment-box.js"></script>
+
     <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1588909752650810');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1588909752650810&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1588909752650810');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1588909752650810&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -357,7 +535,10 @@ src="https://www.facebook.com/tr?id=1588909752650810&ev=PageView&noscript=1"
                             <span class="pvp-label">Precio PVP</span>
                             <span class="price-val">$2.90</span>
                         </div>
-                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cable%20ECCO%20EC-10M%20(Cod%2045137)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-add-cart" onclick="addToCart('45137', 'Cable ECCO EC-10M 18W', 2.90)">🛒 Agregar</button>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cable%20ECCO%20EC-10M%20(Cod%2045137)" target="_blank" class="btn-whatsapp">WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -375,7 +556,10 @@ src="https://www.facebook.com/tr?id=1588909752650810&ev=PageView&noscript=1"
                             <span class="pvp-label">Precio PVP</span>
                             <span class="price-val">$4.25</span>
                         </div>
-                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cable%20LDNIO%20LS841%20V8%20(Cod%2044668)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-add-cart" onclick="addToCart('44668', 'Cable LDNIO LS841 25W V8', 4.25)">🛒 Agregar</button>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cable%20LDNIO%20LS841%20V8%20(Cod%2044668)" target="_blank" class="btn-whatsapp">WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -393,7 +577,10 @@ src="https://www.facebook.com/tr?id=1588909752650810&ev=PageView&noscript=1"
                             <span class="pvp-label">Precio PVP</span>
                             <span class="price-val">$4.00</span>
                         </div>
-                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cable%20LDNIO%20SY-03%20iPhone%20(Cod%2042293)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-add-cart" onclick="addToCart('42293', 'Cable LDNIO SY-03 iPhone', 4.00)">🛒 Agregar</button>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cable%20LDNIO%20SY-03%20iPhone%20(Cod%2042293)" target="_blank" class="btn-whatsapp">WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -411,7 +598,10 @@ src="https://www.facebook.com/tr?id=1588909752650810&ev=PageView&noscript=1"
                             <span class="pvp-label">Precio PVP</span>
                             <span class="price-val">$4.00</span>
                         </div>
-                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cable%20LDNIO%20LS841%20Tipo-C%20(Cod%2044670)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-add-cart" onclick="addToCart('44670', 'Cable LDNIO LS841 Tipo-C', 4.00)">🛒 Agregar</button>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cable%20LDNIO%20LS841%20Tipo-C%20(Cod%2044670)" target="_blank" class="btn-whatsapp">WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -429,7 +619,10 @@ src="https://www.facebook.com/tr?id=1588909752650810&ev=PageView&noscript=1"
                             <span class="pvp-label">Precio PVP</span>
                             <span class="price-val">$11.00</span>
                         </div>
-                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cable%20LDNIO%20LC94C%203en1%20(Cod%2045271)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-add-cart" onclick="addToCart('45271', 'Cable LDNIO LC94C 3en1', 11.00)">🛒 Agregar</button>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cable%20LDNIO%20LC94C%203en1%20(Cod%2045271)" target="_blank" class="btn-whatsapp">WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -447,7 +640,10 @@ src="https://www.facebook.com/tr?id=1588909752650810&ev=PageView&noscript=1"
                             <span class="pvp-label">Precio PVP</span>
                             <span class="price-val">$4.25</span>
                         </div>
-                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Adaptador%20LDNIO%20LC150%20(Cod%2044052)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-add-cart" onclick="addToCart('44052', 'Adaptador OTG LDNIO LC150', 4.25)">🛒 Agregar</button>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Adaptador%20LDNIO%20LC150%20(Cod%2044052)" target="_blank" class="btn-whatsapp">WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -471,7 +667,10 @@ src="https://www.facebook.com/tr?id=1588909752650810&ev=PageView&noscript=1"
                             <span class="pvp-label">Precio PVP</span>
                             <span class="price-val">$8.50</span>
                         </div>
-                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cargador%20IPH%2020W%20(Cod%2044956)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-add-cart" onclick="addToCart('44956', 'Cargador IPH 20W A2305', 8.50)">🛒 Agregar</button>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cargador%20IPH%2020W%20(Cod%2044956)" target="_blank" class="btn-whatsapp">WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -489,7 +688,10 @@ src="https://www.facebook.com/tr?id=1588909752650810&ev=PageView&noscript=1"
                             <span class="pvp-label">Precio PVP</span>
                             <span class="price-val">$11.00</span>
                         </div>
-                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cargador%20LDNIO%20Q111%20(Cod%2045028)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-add-cart" onclick="addToCart('45028', 'Cargador LDNIO Q111 20W', 11.00)">🛒 Agregar</button>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Cargador%20LDNIO%20Q111%20(Cod%2045028)" target="_blank" class="btn-whatsapp">WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -513,7 +715,10 @@ src="https://www.facebook.com/tr?id=1588909752650810&ev=PageView&noscript=1"
                             <span class="pvp-label">Precio PVP</span>
                             <span class="price-val">$18.00</span>
                         </div>
-                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesan%20los%20AirPods%20PRO5%20ANC%20(Cod%2045452)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-add-cart" onclick="addToCart('45452', 'AirPods PRO5 ANC', 18.00)">🛒 Agregar</button>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesan%20los%20AirPods%20PRO5%20ANC%20(Cod%2045452)" target="_blank" class="btn-whatsapp">WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -531,7 +736,10 @@ src="https://www.facebook.com/tr?id=1588909752650810&ev=PageView&noscript=1"
                             <span class="pvp-label">Precio PVP</span>
                             <span class="price-val">$21.00</span>
                         </div>
-                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesan%20los%20AirPods%20LDNIO%20T15%20(Cod%2045835)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-add-cart" onclick="addToCart('45835', 'AirPods LDNIO T15', 21.00)">🛒 Agregar</button>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesan%20los%20AirPods%20LDNIO%20T15%20(Cod%2045835)" target="_blank" class="btn-whatsapp">WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -555,7 +763,10 @@ src="https://www.facebook.com/tr?id=1588909752650810&ev=PageView&noscript=1"
                             <span class="pvp-label">Precio PVP</span>
                             <span class="price-val">$6.00</span>
                         </div>
-                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Parlante%203%20pulgadas%20(Cod%20A0102)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-add-cart" onclick="addToCart('A0102', 'Parlante Económico 3 pulgadas', 6.00)">🛒 Agregar</button>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Parlante%203%20pulgadas%20(Cod%20A0102)" target="_blank" class="btn-whatsapp">WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -573,7 +784,10 @@ src="https://www.facebook.com/tr?id=1588909752650810&ev=PageView&noscript=1"
                             <span class="pvp-label">Precio PVP</span>
                             <span class="price-val">$21.00</span>
                         </div>
-                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Parlante%20Doble%204%20pulgadas%20(Cod%2045699)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-add-cart" onclick="addToCart('45699', 'Parlante Mediano 4 pulgadas', 21.00)">🛒 Agregar</button>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Parlante%20Doble%204%20pulgadas%20(Cod%2045699)" target="_blank" class="btn-whatsapp">WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -597,7 +811,10 @@ src="https://www.facebook.com/tr?id=1588909752650810&ev=PageView&noscript=1"
                             <span class="pvp-label">Precio PVP</span>
                             <span class="price-val">$9.50</span>
                         </div>
-                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Soporte%20Vehicular%20Metal%20LDNIO%20(Cod%2043757)" target="_blank" class="btn-whatsapp">Pedir</a>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-add-cart" onclick="addToCart('43757', 'Soporte Vehicular Metal LDNIO', 9.50)">🛒 Agregar</button>
+                        <a href="https://wa.me/593984833448?text=Hola%20CKAMTECH,%20me%20interesa%20el%20Soporte%20Vehicular%20Metal%20LDNIO%20(Cod%2043757)" target="_blank" class="btn-whatsapp">WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -606,9 +823,132 @@ src="https://www.facebook.com/tr?id=1588909752650810&ev=PageView&noscript=1"
 
     </div>
 
+    <!-- BOTÓN FLOTANTE DEL CARRITO -->
+    <button class="cart-float-btn" onclick="toggleCart()">
+        🛒 Mi Carrito <span class="cart-badge" id="cartCount">0</span>
+    </button>
+
+    <!-- MODAL CARRITO DE COMPRAS -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Carrito de Compras</h3>
+                <button class="close-cart" onclick="toggleCart()">&times;</button>
+            </div>
+            <div class="cart-body" id="cartItems">
+                <p style="text-align: center; color: var(--text-gray);">El carrito está vacío</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+                <!-- Contenedor donde PayPhone renderiza su botón de pago -->
+                <div id="pp-button"></div>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2026 CKAMTECH Ecuador. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- LÓGICA DEL CARRITO Y PAYPHONE -->
+    <script>
+        let cart = [];
+
+        function addToCart(sku, name, price) {
+            const existing = cart.find(item => item.sku === sku);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({ sku, name, price, quantity: 1 });
+            }
+            updateCartUI();
+        }
+
+        function updateQuantity(sku, delta) {
+            const item = cart.find(i => i.sku === sku);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.sku !== sku);
+                }
+            }
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('active');
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const cartCount = document.getElementById('cartCount');
+            const cartTotal = document.getElementById('cartTotal');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            cartCount.textContent = totalItems;
+            cartTotal.textContent = `$${totalPrice.toFixed(2)}`;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="text-align: center; color: var(--text-gray);">El carrito está vacío</p>';
+                document.getElementById('pp-button').innerHTML = '';
+            } else {
+                cartItemsContainer.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <span>$${item.price.toFixed(2)} x ${item.quantity} = $${(item.price * item.quantity).toFixed(2)}</span>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button onclick="updateQuantity('${item.sku}', -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button onclick="updateQuantity('${item.sku}', 1)">+</button>
+                        </div>
+                    </div>
+                `).join('');
+
+                initPayPhone(totalPrice);
+            }
+        }
+
+        function initPayPhone(amount) {
+            const amountInCents = Math.round(amount * 100);
+            const container = document.getElementById('pp-button');
+            container.innerHTML = ''; 
+
+            if (amountInCents <= 0) return;
+
+            // CONFIGURACIÓN DE PAYPHONE
+            // Reemplaza "TU_TOKEN_DE_PAYPHONE" y "TU_STORE_ID" con tus credenciales obtenidas en PayPhone Developer
+            payphone.Button({
+                token: "TU_TOKEN_DE_PAYPHONE", 
+                btnOnly: true,
+                fields: {
+                    endpoint: "https://pay.payphonetodoesposible.com/api/button/V2/Confirm",
+                    amount: amountInCents,
+                    amountWithoutTax: amountInCents,
+                    currency: "USD",
+                    clientTransactionId: "CKAM-" + Date.now(),
+                    storeId: "TU_STORE_ID"
+                },
+                render: "#pp-button",
+                callback: function (response) {
+                    if (response.status === "Approved") {
+                        alert("¡Pago realizado con éxito! ID de Transacción: " + response.transactionId);
+                        cart = [];
+                        updateCartUI();
+                        toggleCart();
+                    } else {
+                        alert("Ocurrió un inconveniente con el pago.");
+                    }
+                }
+            });
+        }
+    </script>
 </body>
 </html>
